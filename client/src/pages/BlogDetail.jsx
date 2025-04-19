@@ -1,17 +1,27 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const BlogDetail = () => {
-    const location = useLocation()
-    const post = location.state?.post
+    const { id } = useParams();
 
-    if (!post) {
-        return (
-            <div className="p-8 text-center">
-                <h2 className="text-2xl text-red-600">Post not found</h2>
-                <Link to="/blog" className="text-blue-500 hover:underline">Back to Blog</Link>
-            </div>
-        );
-    }
+    const [post, setPost] = useState(null);
+
+    useEffect(() => {
+        const fetchPost = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/blog/${id}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setPost(data);
+            } catch (error) {
+                console.error('Error fetching blog post:', error);
+            }
+        };
+        fetchPost();
+    }, [])
+
 
     return (
         <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded mt-8">
