@@ -24,15 +24,22 @@ const BlogDetail = () => {
 
 
     return (
-        <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded mt-8">
-            <h1 className="text-3xl font-bold text-blue-700 mb-2">{post.title}</h1>
-            <p className="text-sm text-gray-500 mb-4">By {post.author} • {post.date}</p>
-            <p className="whitespace-pre-line text-gray-800 leading-relaxed">
-                {post.content}
-            </p>
-            <Link to="/blog" className="inline-block mt-6 text-blue-600 hover:underline">
-                ← Back to Blog
-            </Link>
+        <div>
+            {post
+                ? <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded mt-8">
+                    <h1 className="text-3xl font-bold text-blue-700 mb-2">{post.title}</h1>
+                    <p className="text-sm text-gray-500 mb-4">By {post.author} • {post.date}</p>
+                    <p className="whitespace-pre-line text-gray-800 leading-relaxed">
+                        {post.content}
+                    </p>
+                    <Link to="/blog" className="inline-block mt-6 text-blue-600 hover:underline">
+                        ← Back to Blog
+                    </Link>
+                </div>
+                : <div className="flex justify-center items-center h-screen">
+                    <p className="text-lg text-gray-700">Loading...</p>
+                </div>
+            }
         </div>
     );
 };
