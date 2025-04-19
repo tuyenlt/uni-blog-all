@@ -1,0 +1,29 @@
+{
+  "setupTasks": [
+    {
+      "command": "cd client && npm install && cd ..",
+      "name": "Install Client Dependencies"
+    },
+    {
+      "command": "cd server && npm install && cd ..",
+      "name": "Install Server Dependencies"
+    }
+  ],
+  "tasks": {
+    // "start-client": {
+    //   "name": "Start Client",
+    //   "command": "cd client && npm run dev",
+    //   "runAtStart": false
+    // },
+    // "start-server": {
+    //   "name": "Start Server",
+    //   "command": "cd server && npm run dev",
+    //   "runAtStart": false
+    // },
+    "start": {
+      "name": "Start Both Client and Server",
+      "command": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
+      "runAtStart": true
+    }
+  }
+}
