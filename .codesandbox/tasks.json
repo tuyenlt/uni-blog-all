@@ -10,20 +10,21 @@
     }
   ],
   "tasks": {
-    // "start-client": {
-    //   "name": "Start Client",
-    //   "command": "cd client && npm run dev",
-    //   "runAtStart": false
-    // },
-    // "start-server": {
-    //   "name": "Start Server",
-    //   "command": "cd server && npm run dev",
-    //   "runAtStart": false
-    // },
-    "start": {
-      "name": "Start Both Client and Server",
-      "command": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
-      "runAtStart": true
+    "start-client": {
+      "name": "Start Client",
+      "command": "cd client && npm run dev",
+      "runAtStart": true,
+      "preview": {
+        "port" : 5173
+      }
+    },
+    "start-server": {
+      "name": "Start Server",
+      "command": "cd server && npm run dev",
+      "runAtStart": true,
+      "preview": {
+        "port" : 8080
+      }
     }
   }
 }
